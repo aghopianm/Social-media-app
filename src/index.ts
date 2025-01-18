@@ -20,6 +20,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Add a test route
+app.get('/', (req, res) => {
+  res.json({ message: 'Facebook Clone API is running!' });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
