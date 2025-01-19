@@ -1,13 +1,13 @@
 import { Pool } from 'pg';
 
+// Get the connection string from Supabase dashboard
+const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:5432/${process.env.DB_NAME}`;
+
 const pool = new Pool({
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  port: 5432,
+  connectionString,
   ssl: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
+    servername: process.env.DB_HOST
   }
 });
 
